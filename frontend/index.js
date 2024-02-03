@@ -449,7 +449,7 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       selectAllCards.forEach (elem => elem.classList.remove("selected"));
       element.classList.toggle("selected");
       
-      console.log(headers[0]);
+      
 
       
       /*headers.forEach ((item) => {
@@ -469,12 +469,13 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       });*/
     });
   });
-
+  console.log(headers[0]);
 
 
 
   //The h4 dropdown toggle function
   let selectAllh4 = document.querySelectorAll(".closed");
+
   selectAllh4.forEach ((item) => {
     item.addEventListener("click", () => {
       if (item.className === "closed") {

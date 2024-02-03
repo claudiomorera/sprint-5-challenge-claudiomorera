@@ -7,6 +7,7 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
     
     const learners = res.data;
     const mentors = res2.data;
+     
   //First create components to avoid repetition and set the divParent.cards
   let divParent = document.getElementsByClassName("cards")[0];
 
@@ -450,26 +451,18 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       element.classList.toggle("selected");
       
       
+      const str = element.textContent.split(' ');
+      const str2 = str[1].split(".");
+      const str3 = str2[0].slice(0, -str[0].length);
 
-      
-      /*headers.forEach ((item) => {
-        let i = item.textContent; //This gives all names in text 
-        let arr = i.split() //convert all text into an array to iterate over with
-        
-        pMain.textContent = `The selected learner is ${item.textContent}`
-      });*/
+      pMain.textContent = `The selected learner is ${str[0] + ' ' + str3}`;
       
       
+      //console.log(str[1].slice(0, str.indexOf(' ')));
       
-
-      //console.log(text);
-      /*headers.forEach((elem) => {
-        elem.textContent = `${learners[this.elem].fullName}, ID ${learners[this.elem]}`;
-        console.log(elem)
-      });*/
+      console.log();
     });
   });
-  console.log(headers[0]);
 
 
 

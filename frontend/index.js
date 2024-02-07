@@ -440,16 +440,32 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
   //If you click the div add the .selected class to the divs 
   const selectAllCards = document.querySelectorAll(".card");
 
+
+  /* Add a way di-select the components and the h3 shows no selected div again!, when a component is clicked again the component should di-select automacally */
  
   
   const headers = document.querySelectorAll('h3');
 
   selectAllCards.forEach ((element) => {
+
     element.addEventListener("click", () => {
 
       selectAllCards.forEach (elem => elem.classList.remove("selected"));
-      element.classList.toggle("selected");
       
+      //element.classList.add("selected");
+      
+      
+      if (element.classList.contains('selected')) {
+        element.classList.remove('selected');
+      } 
+      else {
+        element.classList.add("selected");
+      }
+      
+      console.log(element.className.includes('selected'));
+
+      
+
       
       const str = element.textContent.split(' ');
       const str2 = str[1].split(".");
@@ -458,9 +474,7 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       pMain.textContent = `The selected learner is ${str[0] + ' ' + str3}`;
       
       
-      //console.log(str[1].slice(0, str.indexOf(' ')));
-      
-      console.log();
+     
     });
   });
 

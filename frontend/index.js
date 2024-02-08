@@ -435,13 +435,13 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       tag.textContent = "No learner is selected";
     }, 0);
   }
-  load (pMain)
+  load (pMain);
 
   //If you click the div add the .selected class to the divs 
   const selectAllCards = document.querySelectorAll(".card");
 
 
-  /* Add a way di-select the components and the h3 shows no selected div again!, when a component is clicked again the component should di-select automacally */
+  /* Add a way di-select the components and the h3 shows no selected div again!, when a component is clicked again the component should di-select automically */
  
   
   const headers = document.querySelectorAll('h3');
@@ -451,28 +451,38 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
     
     element.addEventListener("click", () => {
 
-      let isSelected = true;
-      if (isSelected) {
-        element.classList.toggle('selected');
-        isSelected = !isSelected;
-        
-      }
-      else {
-        
-        selectAllCards.forEach(elem => elem.classList.remove("selected"));
-      }
-      
-                
+      let selectedElement = null;
+
+      function toggleSelection(element){
+        if (selectedElement !== element){
+          if (selectedElement) {
+            selectedElement.classList.remove('selected');
+          }
+          element.classList.toggle('selected');
+          selectedElement = element; 
+        } 
+        else {
+          element.classList.toggle('selected');
+          selectedElement = null;
+        }
+      }       
+      toggleSelection(element);
+
+
 
       //OK 
       const str = element.textContent.split(' ');
       const str2 = str[1].split(".");
       const str3 = str2[0].slice(0, -str[0].length);
 
-      pMain.textContent = `The selected learner is ${str[0] + ' ' + str3}`;
+      if (element.className.includes('selected')) {
+        pMain.textContent = `The selected learner is ${str[0] + ' ' + str3}`;
+      } else {
+        pMain.textContent = `No learner is selected`;
+      }
+
+
       
-      
-     
     });
   }); 
 
